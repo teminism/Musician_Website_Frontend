@@ -1,0 +1,610 @@
+/* Student ID: 2002532 */
+
+html,body {
+    margin: 0;
+    height: 100%; /* gives the body 100% height */
+    overflow: auto; /* makes the page is scrollable when necessary */
+}
+
+body {
+  font-family: 'Roboto', sans-serif; /* sets the font for any text within the body to Roboto */
+  color: #FFFFFF; /* set the colour the text within the body to white */
+  margin: 0;
+  padding: 0;
+}
+
+.home-bg { /* class, can be used multiple times on a page */
+  background-image: url("../images/toro_cover.jpg") ; /* https://lnwy.co/read/under-the-covers-harry-israelson-the-art-of-toro-y-moi/ */ /* set the background to the image linked */
+  background-color: #cccccc;
+  height: 100%; /* gives the background image 100% height */
+  background-position: center center; /* makes sure the background image is centered */
+  background-repeat: no-repeat; /* makes sure the background image isn't repeated */
+  background-size: cover; /* makes sure the background image covers the whole page*/
+  background-attachment: fixed; /* makes sure the background image will be fixed against the containing block and will not scroll*/
+  position: relative; /* makes sure the position is relative to its normal position */
+}
+
+@media only screen and (max-width: 480px){ /* used to apply a more fitting image for a media type or device  with a width of 480px */
+  .home-bg{
+    background-image: url("../images/home_bg_480.jpg") ;
+  }
+
+}
+
+.page-bg{
+  background-image: url("../images/gradient_bg.png") ;
+  background-color: #cccccc;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+  overflow: auto; /* makes the background is scrollable when necessary */
+}
+
+
+
+.page-wrapper{
+  margin-right: auto;
+  margin-left:  auto;
+  position: relative;
+  max-width: 60em;
+  padding: 4.75em 3.75em 3.75em 3.75em;
+  text-align: left;
+  height: 100%;
+  flex-direction: row; /* items within the class are ordered the same way as the text direction */
+}
+
+
+
+#bio_img { /*ID, can only be used once on a page */
+  padding: 0.3125em;
+  width: 300px;
+  max-width: inherit; /* inherits the max-width from its parent element */
+  position: inherit; /* inherits the position from its parent element */
+  display: block; /* displayed as a block */
+  overflow: auto;
+  float: right;
+}
+
+
+#page_title{
+  color: rgb(226, 226, 226);
+  text-decoration: none;
+  text-align: center;
+  position: relative;
+  letter-spacing: 0.1875em;
+  font-weight: bold;
+  font-size: 1.875em;
+  text-transform: uppercase;
+
+}
+
+.page-wrapper p{ /* affects all p tags withing the page-wrapper class */
+  color: rgb(226, 226, 226);
+  text-decoration: none;
+  position: relative;
+  letter-spacing: 0.1875em;
+  font-weight: normal;
+  font-size:  0.875em;
+}
+
+#first {
+  font-size: 250%;
+  padding: 0.375em 0.1875em;
+  margin-right: 0.375em;
+  float: left;
+}
+
+
+
+
+
+
+nav {
+    position: fixed; /* fixed position means the nav does not move even when scrolling on the page */
+    display: block;
+    top: 0;
+    width: 100%;
+    z-index: 500;
+    background-image: url("../images/nav_bg.jpg") ;
+    display: flex; /* expands the nav to fill available free space or shrinks them to prevent overflow */
+    justify-content: space-around; /* distributes evenly the items within nav */
+    align-items: center;
+    min-height: 3.75em;
+    text-transform: uppercase; /* makes all text within nav uppercase */
+}
+
+.logo {
+    color: rgb(226, 226, 226);
+    text-transform: uppercase;  /* makes all text within logo uppercase */
+    letter-spacing: 0.3125em; /* the space between the letters */
+    font-size: 1.3125em;
+}
+
+.nav-links {
+    display:flex;
+    justify-content: space-around;
+    width: 30%;
+}
+
+.nav-links li {
+    list-style: none;
+}
+
+.nav-links a {
+    color: rgb(226, 226, 226);
+    text-decoration: none;
+    position: relative;
+    letter-spacing: 0.1875em;
+    font-weight: bold;
+    font-size: 0.875em;
+}
+
+.nav-links a:hover { /* when the cursor hovers on the nav bar text */
+  color: rgb(226, 226, 226);
+  text-decoration: underline;
+  text-underline-position: under;
+  border-bottom: 0.1875em solid;
+}
+
+.nav-links a.active {
+  color: rgb(226, 226, 226);
+  border-bottom: 0.1875em solid;
+}
+
+
+.colapse {
+    display: none;
+}
+
+.colapse div {
+    width: 1.5625em;
+    height: 0.1875em;
+    background-color: rgb(226, 226, 226);
+    margin: 0.3125em;
+    transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 0.3125em) { /* makes sure the navbar is responsive to a media type or device  with a width of 0.3125em */
+    .nav-links {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 48em) { /* makes sure the navbar is responsive to a media type or device  with a width of 45em */
+    body {
+        overflow-x: hidden; /* clips the body and no scrolling*/
+    }
+
+    .nav-links {
+        position: fixed;
+        right: 0px;
+        height: 92vh;
+        top: 8vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+    }
+
+    .nav-links li {
+        opacity: 0;
+    }
+
+    .colapse {
+        display: block;
+        cursor: pointer;
+    }
+}
+
+.nav-active {
+        transform: translateX(0%);
+        background-color: #cc3c57;
+}
+
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.toggle .line2 {
+    opacity: 0;
+}
+
+.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+
+
+
+/* MUSIC DISPLAY*/
+
+.gallery {
+  border: 1px; /* gives the div a border */
+  background-color: #cb3b5514;
+  margin: 10px;
+  box-shadow: 2px 2px;
+}
+
+.gallery:hover {
+  border: 0.1875em solid #FFFFFF;
+}
+
+.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+.gallery a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.responsive {
+  padding: 0 6px;
+  float: left;
+  width: 25%;
+}
+
+@media only screen and (max-width: 700px) {
+  .responsive {
+    width: 49.99999%;
+    margin: 6px 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .responsive {
+    width: 100%;
+  }
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* PRODUCTS */
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+  height: 300px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width:600px) { /* makes sure column is responsive to a media type or device  with a width of 700px */
+  .column {
+    width: 100%;
+  }
+}
+
+
+
+.merch {
+  padding: 0 6px;
+  float: left;
+  width: 100%;
+}
+
+
+@media only screen and (max-width: 700px) { /* makes sure merch is responsive to a media type or device  with a width of 700px */
+  .merch {
+    width: 49.99999%;
+    margin: 6px 0;
+  }
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+/* SINGLE DISPLAY */
+
+
+
+#product-img{
+  background-image: url("../images/toro_1.jpg");
+  background-position: center;
+  background-size: cover;
+  flex: 50%;
+  width: 33%;
+  float: left;
+  margin: 2px;
+}
+.product-desc{
+  flex: 50%;
+  padding: 20px;
+  text-align: center;
+  background-color: #cb3b5514;
+  box-shadow: 2px 2px;
+  color: #e0e0e0;
+  letter-spacing: 1.5px;
+
+}
+
+.product-desc img{
+  flex: 50%;
+  width: 33%;
+  float: left;
+  margin: 2px;
+  border-right: 2px solid white;
+
+}
+
+
+
+.product-desc h1{
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 40px;
+}
+.product-desc h2{
+  display: grid;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 50px;
+}
+.product-desc p{
+  display: grid;
+  font-weight: normal;
+  line-height: 20px;
+  font-size: 13px;
+}
+.product-desc i{
+  color: #e0e0e0;
+  margin: 25px 0;
+}
+.product-desc button{
+  padding: 10px 15px;
+  box-sizing: border-box;
+  box-shadow: 2px 2px;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1875em;
+  color: #FFFFFF;
+  background-color: #cb3b5514;
+  cursor: pointer;
+  outline: none;
+  transition: .3s;
+}
+.product-desc button:hover{
+  border: 0.1875em solid #FFFFFF;
+}
+
+
+
+/*BASKET*/
+
+table { /* adds styles to the table */
+  border-collapse: separate;
+  border-spacing: 1em;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  color: rgb(226, 226, 226);
+  text-decoration: none;
+  position: relative;
+  letter-spacing: 0.1875em;
+  font-weight: normal;
+  font-size:  0.875em;
+}
+
+table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
+
+table tr {
+  background-color: #cb3b5514;
+  box-shadow: 2px 2px;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+table th:nth-child(1) {
+  width: 70%;
+}
+
+
+table th:nth-child(2) {
+  width: 10%;
+}
+
+table th:nth-child(3) {
+  width: 10%;
+}
+
+table th:nth-child(4) {
+  width: 10%;
+}
+
+
+table td:nth-child(1) {
+  width: 70%;
+}
+
+
+table td:nth-child(2) {
+  width: 10%;
+}
+
+table td:nth-child(3) {
+  width: 10%;
+}
+
+table td:nth-child(4) {
+  width: 10%;
+}
+
+
+table h1 {
+  color: rgb(226, 226, 226);
+  text-decoration: none;
+  text-align: center;
+  position: relative;
+  letter-spacing: 0.1875em;
+  font-weight: bold;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+table button{
+  padding: 10px 9px;
+  box-sizing: border-box;
+  box-shadow: 2px 2px;
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1875em;
+  color: #FFFFFF;
+  background-color: #cb3b5514;
+  cursor: pointer;
+  outline: none;
+  transition: .3s;
+}
+
+
+
+
+table button:hover{
+    border: 0.1875em solid #FFFFFF;
+  }
+
+
+
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  table tr {
+    border-bottom: 0.1875em solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+
+  table td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+
+
+.thumbnail {
+  float: left;
+  width: 36%;
+  margin-right: 10px;
+}
+
+
+/* FOOTER */
+
+
+.footer {
+   position: fixed; /* similar to the navbar but fixed to the bottom of the page */
+   left: 0;
+   right: 0;
+   bottom: 0;
+   width: 100%;
+   height: 50px;
+   background: #db8555;
+   color: white;
+   text-align: center;
+}
+
+
+.footer-links {
+    display:flex;
+    justify-content: space-around;
+    width: 30%;
+    padding: 15px 15px 15px 15px;
+    margin: auto;
+}
+
+.footer-links li {
+    list-style: none;
+}
+
+.footer-links a {
+    text-decoration: none;
+    position: relative;
+    letter-spacing: 0.1875em;
+}
